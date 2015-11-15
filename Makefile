@@ -4,6 +4,9 @@ all: test.bin
 clean:
 	rm -f *.o *.elf *.bin
 
+debug:
+	qemu-system-arm -M versatilepb -m 128M -nographic -kernel test.bin -s -S
+
 %.o: %.s
 	arm-none-eabi-as -mcpu=$(CPU) -g $< -o $@
 
